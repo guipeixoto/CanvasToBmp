@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="pt-br">
+    <link rel="stylesheet" href="style.css"/>
+    <script src="canvastobmp.js"></script>
+    <script src="html2canvas.js"></script>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="fb.js"></script>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body onload="geraBPM()">
+
+<div id="medicos" >
+    <h1>Lista Médicos</h1>
+
+    <div id="list-medicos" class="s-med">
+        <p>Dr. João</p>
+        <p>Dr. Pedro</p>
+        <p>Dr. Mané</p>
+        <p>Dr. José</p>
+    </div>
+</div>
+
+<h3>Preview BMP:</h3>
+<div id="previewImage">
+</div>
+
+<div id="previewbmp">
+</div>
+
+<div
+        class="fb-like"
+        data-share="true"
+        data-width="450"
+        data-show-faces="true">
+</div>
+
+<script>
+    function geraBPM() {
+        var element = $("#list-medicos"); // global variable
+        var getCanvas; // global variable
+
+        //$("#btn-Preview-Image").on('click', function () {
+            html2canvas(element, {
+                onrendered: function (canvas) {
+                    getCanvas = canvas;
+
+
+                    CanvasToBMP.toDataURL(getCanvas, function(uri) {
+                        var img = new Image();
+                        img.onload = function() {document.body.appendChild(this)};
+                        img.onerror = function() {console.log("Um erro ocorreu, carregando imagem...")};
+                        img.src = uri;
+                    });
+                }
+            });
+        //});
+    }
+</script>
+</body>
+</html>
