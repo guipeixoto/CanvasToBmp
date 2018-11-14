@@ -33,6 +33,7 @@ var CanvasToBMP = {
 	 */
 	toArrayBuffer: function(canvas, callback, error) {
 
+
 		
 
 		try {
