@@ -34,6 +34,7 @@ var CanvasToBMP = {
 	toArrayBuffer: function(canvas, callback, error) {
 
 		
+
 		try {
 			var me			   = this,
 				w              = canvas.width,
